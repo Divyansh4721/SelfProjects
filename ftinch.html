@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="contact.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9f9e58ef8b.js" crossorigin="anonymous"></script>
+    <title>Contact List</title>
+    <style>
+        button {
+            width: 40%;
+            height: 50px;
+            margin-top: 10px;
+            border: 0;
+            background-color: rgb(247, 194, 20);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 23px;
+            font-weight: bold;
+            color: white;
+        }
+
+        #outer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #outer span {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        input {
+            width: 50%;
+            margin-top: 10px;
+            padding: 8px;
+            font-size: 17px;
+            border: 1px solid #dfe1e4;
+            border-radius: 10px;
+            outline: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="window.location.href='index.html'" class="fas fa-home"
+        style="font-size: 15px; height: 40px; width: 40px;"></button>
+    <br>
+    <br>
+    <div id="outer">
+        <span>
+            <input type="number" id="inputft">ft
+        </span>
+        <span>
+            <input type="number" id="inputinch">inch
+        </span>
+        <br>
+        <span>
+            <input type="number" id="outputft" value="0" disabled>ft
+        </span>
+        <span>
+            <input type="number" id="outputinch" value="0" disabled>inch
+        </span>
+        <br>
+        <span>
+            <button onclick="helper('+')">Add</button>
+            <button onclick="helper('-')">Subtract</button>
+        </span>
+    </div>
+</body>
+<script>
+    function helper(task) {
+        if (task === "+") {
+            let total = (outputft.value * 12) + (outputinch.value * 1) + (inputft.value * 12) + (inputinch.value * 1);
+            outputft.value = Math.floor(total / 12);
+            outputinch.value = total % 12;
+            inputft.value = "";
+            inputinch.value = "";
+        } else {
+            let total = (outputft.value * 12) + (outputinch.value * 1) - (inputft.value * 12) - (inputinch.value * 1);
+            outputft.value = Math.floor(total / 12);
+            outputinch.value = total % 12;
+            inputft.value = "";
+            inputinch.value = "";
+        }
+    }
+</script>
+
+</html>
